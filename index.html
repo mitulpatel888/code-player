@@ -33,7 +33,7 @@
             #output{
                 border-top-right-radius:  5px; /*For rounded borders at the corners*/
                 border-bottom-right-radius : 5px;
-                border-right: 1px solid grey;
+                border-right: 1px solid grey; /*Right border*/
             }
             #html{
 
@@ -56,7 +56,11 @@
             </div>
         </div>
         <script>
-        
+            $(".toggleButton").hover(function(){
+                $(this).css("background-color","grey"); /*handlerIn --> Color changes to grey when hover*/
+            }, function(){
+                $(this).css("background-color","#eeeeee"); /*handlerOut --> Color changes to grey when mouse leaves the element*/
+            })
         
         </script>
         
