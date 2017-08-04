@@ -46,7 +46,15 @@
             .highlightedButton{
                 background-color: grey;
             }
-            
+            textarea{
+                width: 50%;
+                resize: none; /*Prevent text area from being resized*/
+                
+                border-color:grey;
+            }
+            .iframe{
+                border:none;
+            }
         </style>
     </head>
     <body>
@@ -63,7 +71,8 @@
             </div>
         </div>
         <div id="bodyContainer">
-            
+            <textarea id="htmlPanel" class="panel">Hello!!</textarea> 
+            <iframe id="outputPanel" class="panel"></iframe>
         </div>
         <script>
             $(".toggleButton").hover(function(){
@@ -75,6 +84,12 @@
                 $(this).toggleClass("active"); /*Toggle the "active" class */
                 $(this).removeClass("highlightedButton"); 
             })
+            $(".panel").height($(window).height()-$("#header").height()); /*Set height = page size-header size*/
+            $(".panel").width($(window).width() /2 - 15);
+            
+            $("textarea").on('change keyup paste', function() { /*This will change content instantly*/
+                $("iframe").contents().find("html").html($("#htmlPanel").val());
+            });
         </script>
         
     </body>
