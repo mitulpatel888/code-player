@@ -90,7 +90,8 @@
                 $(this).removeClass("highlightedButton"); 
                 var panelId = $(this).attr("id") + "Panel";
                 $("#"+panelId).toggleClass("hidden");
-                var numofActivePanel = 4 - $(".hidden").length()
+                var numofActivePanel = 4 - $('.hidden').length;
+                $(".panel").width($(window).width() /numofActivePanel - 15);
             })
             $(".panel").height($(window).height()-$("#header").height()); /*Set height = page size-header size*/
             $(".panel").width($(window).width() /2 - 15);
