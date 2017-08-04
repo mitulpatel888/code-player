@@ -55,7 +55,9 @@
             .iframe{
                 border:none;
             }
-            
+            .hidden{
+                display: none;
+            }
         </style>
     </head>
     <body>
@@ -73,8 +75,8 @@
         </div>
         <div id="bodyContainer">
             <textarea id="htmlPanel" class="panel hidden">Hello</textarea> 
-            <!--<textarea id="cssPanel" class="panel hidden">CSS</textarea> 
-            <textarea id="javascriptPanel" class="panel hidden"></textarea>--> 
+            <textarea id="cssPanel" class="panel hidden">CSS</textarea> 
+            <textarea id="javascriptPanel" class="panel hidden"></textarea> 
             <iframe id="outputPanel" class="panel"></iframe>
         </div>
         <script>
@@ -86,9 +88,9 @@
             $(".toggleButton").click(function(){
                 $(this).toggleClass("active"); /*Toggle the "active" class */
                 $(this).removeClass("highlightedButton"); 
-               /* var panelId = $(this).attr("id") + "Panel";
+                var panelId = $(this).attr("id") + "Panel";
                 $("#"+panelId).toggleClass("hidden");
-                var numofActivePanel = 4 - $(".hidden").length()*/
+                var numofActivePanel = 4 - $(".hidden").length()
             })
             $(".panel").height($(window).height()-$("#header").height()); /*Set height = page size-header size*/
             $(".panel").width($(window).width() /2 - 15);
