@@ -80,6 +80,9 @@
             <iframe id="outputPanel" class="panel"></iframe>
         </div>
         <script>
+            function updateOutput() { /*This shows output in iframe window instantly*/
+                $("iframe").contents().find("html").html("<html><head><style type='text/css'>" +$("#cssPanel").val() +"</style></head><body>"+ $("#htmlPanel").val()+"</body></html>"); 
+            }
             $(".toggleButton").hover(function(){
                 $(this).addClass("highlightedButton"); /*handlerIn --> Color changes to grey when hover*/
             }, function(){
@@ -97,11 +100,11 @@
             $(".panel").height($(window).height()-$("#header").height()); /*Set height = page size-header size*/
             $(".panel").width($(window).width() /2 - 15);
             
-            $("iframe").contents().find("html").html($("#htmlPanel").val());
+           updateOutput(); /*function called*/
             
             $("textarea").on('change keyup paste', function() { /*This shows output on iFrame instanly*/
                 
-                $("iframe").contents().find("html").html("<html><head><style type='text/css'>" +$("#cssPanel").val() +"</style></head><body>"+ $("#htmlPanel").val()+"</body></html>"); /**/
+                updateOutput();  /*function called*/
             });
         
         </script>
