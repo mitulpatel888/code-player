@@ -81,7 +81,11 @@
         </div>
         <script>
             function updateOutput() { /*This shows output in iframe window instantly*/
+                
                 $("iframe").contents().find("html").html("<html><head><style type='text/css'>" +$("#cssPanel").val() +"</style></head><body>"+ $("#htmlPanel").val()+"</body></html>"); 
+                
+                /*The eval() function evaluates or executes an argument*/
+                document.getElementById("outputPanel").contentWindow.eval($("#javascriptPanel").val());
             }
             $(".toggleButton").hover(function(){
                 $(this).addClass("highlightedButton"); /*handlerIn --> Color changes to grey when hover*/
@@ -91,7 +95,7 @@
             $(".toggleButton").click(function(){
                 $(this).toggleClass("active"); /*Toggle the "active" class */
                 $(this).removeClass("highlightedButton"); 
-                /*Screen divided it self as we click on buttons*/
+                /*Screen divided it-self as we click on buttons*/
                 var panelId = $(this).attr("id") + "Panel";  /*To get the panel ID*/           
                 $("#"+panelId).toggleClass("hidden"); /*Toggle Panel*/
                 var numofActivePanel = 4 - $('.hidden').length; /*Count number of active panel*/
@@ -106,7 +110,7 @@
                 
                 updateOutput();  /*function called*/
             });
-        
+          
         </script>
         
     </body>
