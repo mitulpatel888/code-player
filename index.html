@@ -88,16 +88,20 @@
             $(".toggleButton").click(function(){
                 $(this).toggleClass("active"); /*Toggle the "active" class */
                 $(this).removeClass("highlightedButton"); 
-                var panelId = $(this).attr("id") + "Panel";
-                $("#"+panelId).toggleClass("hidden");
-                var numofActivePanel = 4 - $('.hidden').length;
-                $(".panel").width($(window).width() /numofActivePanel - 15);
+                /*Screen divided it self as we click on buttons*/
+                var panelId = $(this).attr("id") + "Panel";  /*To get the panel ID*/           
+                $("#"+panelId).toggleClass("hidden"); /*Toggle Panel*/
+                var numofActivePanel = 4 - $('.hidden').length; /*Count number of active panel*/
+                $(".panel").width($(window).width() /numofActivePanel - 15); /*Change width based on active panels*/
             })
             $(".panel").height($(window).height()-$("#header").height()); /*Set height = page size-header size*/
             $(".panel").width($(window).width() /2 - 15);
             
-            $("textarea").on('change keyup paste', function() { /*This shows output on iFrane instanly*/
-                $("iframe").contents().find("html").html($("#htmlPanel").val()); /**/
+            $("iframe").contents().find("html").html($("#htmlPanel").val());
+            
+            $("textarea").on('change keyup paste', function() { /*This shows output on iFrame instanly*/
+                
+                $("iframe").contents().find("html").html("<html><head><style type='text/css'>" +$("#cssPanel").val() +"</style></head><body>"+ $("#htmlPanel").val()+"</body></html>"); /**/
             });
         
         </script>
